@@ -1,82 +1,82 @@
 # CLAUDE.md
 
-This file documents the repository for AI assistants (Claude Code and similar tools). Update it as the project evolves.
+このファイルは AI アシスタント（Claude Code など）向けにリポジトリを説明するものです。プロジェクトの変化に合わせて随時更新してください。
 
-## Repository Status
+## リポジトリの現状
 
-This repository is freshly initialized. The only file currently tracked is `.gitkeep`. No source code, dependencies, build system, or tests exist yet.
+このリポジトリは初期化されたばかりです。現在追跡されているファイルは `.gitkeep` のみで、ソースコード・依存関係・ビルドシステム・テストはまだ存在しません。
 
-**Owner:** mirai2x  
-**Remote:** mirai2x/test  
-**Default branch:** `main`
+**オーナー:** mirai2x  
+**リモート:** mirai2x/test  
+**デフォルトブランチ:** `main`
 
 ---
 
-## Git Workflow
+## Git ワークフロー
 
-### Branch Strategy
+### ブランチ戦略
 
-- `main` — stable, production-ready state
-- Feature branches use the pattern `claude/<description>-<id>` for AI-driven changes
-- Create feature branches off `main`; open a PR to merge back
+- `main` — 安定した本番相当の状態を保つ
+- AI による変更には `claude/<説明>-<id>` の命名パターンを使用する
+- フィーチャーブランチは `main` から切り、PR を通じてマージする
 
-### Commit Conventions
+### コミットメッセージ規約
 
-- Write concise, imperative commit messages (e.g. "Add login endpoint", not "Added login endpoint")
-- Focus the message on *why*, not *what* — the diff already shows what changed
-- One logical change per commit; avoid bundling unrelated fixes
+- 命令形・簡潔に記述する（例：「ログインエンドポイントを追加」、「追加した」ではなく）
+- *なぜ* 変更したかを伝える — *何を* 変えたかはdiffで分かる
+- 1コミット = 1つの論理的変更。無関係な修正をまとめない
 
-### Push Protocol
+### プッシュ手順
 
 ```bash
 git push -u origin <branch-name>
 ```
 
-Retry up to 4 times on network failure with exponential backoff (2s → 4s → 8s → 16s).
+ネットワークエラー時は指数バックオフ（2秒 → 4秒 → 8秒 → 16秒）で最大4回リトライする。
 
 ---
 
-## Development Conventions (to be updated when code is added)
+## 開発規約（コード追加時に更新すること）
 
-Until source code exists, these are the intended defaults:
+ソースコードが存在するまでのデフォルト方針：
 
-### Code Style
+### コードスタイル
 
-- Follow the conventions of whatever language/framework is introduced
-- Prefer explicit over implicit; avoid magic where a clear alternative exists
-- No unnecessary comments — only document the non-obvious *why*, not the *what*
-- No emojis in code or commit messages
+- 導入する言語・フレームワークの慣習に従う
+- 暗黙的より明示的を優先し、明確な代替手段がある場合は「魔法」を避ける
+- 不要なコメントは書かない — 自明でない *理由* のみコメントする（*何をしているか* は書かない）
+- コードやコミットメッセージに絵文字を使わない
 
-### Testing
+### テスト
 
-- Write tests for new behaviour before or alongside the implementation
-- Do not commit code that breaks existing tests
+- 新しい挙動には実装と同時かそれ以前にテストを書く
+- 既存テストを壊すコードはコミットしない
 
-### Security
+### セキュリティ
 
-- Never commit secrets, credentials, or `.env` files
-- Validate all external input at system boundaries; trust internal code
-- Follow OWASP Top 10 guidance when writing web-facing code
-
----
-
-## Working with AI Assistants
-
-- This file is the primary source of truth for repo conventions; keep it current
-- When adding a new language, framework, or tool, update the relevant section here
-- Prefer editing existing files over creating new ones
-- Do not add abstractions, refactors, or cleanup beyond what a task requires
-- Do not create intermediate planning documents — work from conversation context
+- シークレット・認証情報・`.env` ファイルは絶対にコミットしない
+- 外部入力はシステム境界でバリデーションする。内部コードは信頼する
+- Web 向けコードは OWASP Top 10 に従う
 
 ---
 
-## Updating This File
+## AI アシスタントへの指針
 
-When the project gains a codebase, replace the placeholder sections above with accurate information covering:
+- このファイルはリポジトリ規約の唯一の情報源として最新状態を維持する
+- 新しい言語・フレームワーク・ツールを追加した際は該当セクションを更新する
+- 新規ファイル作成より既存ファイルの編集を優先する
+- タスクの要求を超えた抽象化・リファクタリング・整理はしない
+- 中間的な計画文書は作成しない — 会話のコンテキストから直接作業する
 
-- Project purpose and architecture overview
-- Directory structure and what lives where
-- How to install dependencies and run the project locally
-- How to run tests and linters
-- Any environment variables required (`cp .env.example .env`)
-- Deployment process
+---
+
+## このファイルの更新について
+
+プロジェクトにコードベースが追加されたら、上記のプレースホルダーを以下の正確な情報に置き換えてください：
+
+- プロジェクトの目的とアーキテクチャ概要
+- ディレクトリ構成と各ディレクトリの役割
+- 依存関係のインストール方法とローカルでの起動手順
+- テスト・リンターの実行方法
+- 必要な環境変数（`cp .env.example .env` など）
+- デプロイ手順
